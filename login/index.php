@@ -1,5 +1,11 @@
 <?php
-    session_start();
+session_start();
+require_once __DIR__ . '/../common/auth.php';
+
+if (isLogin()) {
+    header('Location: ../memo/');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
