@@ -28,3 +28,19 @@ function stringMinSizeCheck(array &$errors, string $check_value, string $message
         array_push($errors, $message);
     }
 }
+
+/**
+ * 最大文字数チェック
+ *
+ * @param array $errors
+ * @param string $check_value
+ * @param string $message
+ * @param integer $max_size
+ * @return void
+ */
+function stringMaxSizeCheck(array &$errors, string $check_value, string $message, int $max_size = 255): void
+{
+    if ($max_size < mb_strlen($check_value)) {
+        array_push($errors, $message);
+    }
+}
