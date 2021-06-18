@@ -1,5 +1,13 @@
+<?php
+require_once __DIR__ . '/../common/auth.php';
+
+if (!isLogin()) {
+    header('Location: ../login/');
+    exit;
+}
+?>
 <!DOCTYPE html>
-<html lang="ja">    
+<html lang="ja">
     <?php
         include_once "../common/header.php";
         echo getHeader("メモ投稿");
