@@ -73,3 +73,25 @@ function halfAlphanumericCheck(array &$errors, string $check_value, string $mess
         array_push($errors, $message);
     }
 }
+
+/**
+ * メールアドレスの重複チェック
+ *
+ * @param array $errors
+ * @param string $check_value
+ * @param string $message
+ * @return void
+ */
+function mailAddressDuplicationCheck(array &$errors, string $check_value, string $message): void
+{
+    $database_handler = getDatabaseConnection();
+    if ($statement = $database_handler->prepare('SELECT id FROM users WHERE email = :user_email')) {
+        $statement->bindParam(':user_email', $check_value);
+        $statement->execute();
+    }
+
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($result) {
+        array_push($errors, $message);
+    }
+}
