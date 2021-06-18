@@ -44,3 +44,18 @@ function stringMaxSizeCheck(array &$errors, string $check_value, string $message
         array_push($errors, $message);
     }
 }
+
+/**
+ * メールアドレスチェック
+ *
+ * @param array $errors
+ * @param string $check_value
+ * @param string $message
+ * @return void
+ */
+function mailAddressCheck(array &$errors, string $check_value, string $message): void
+{
+    if (!filter_var($check_value . FILTER_VALIDATE_EMAIL)) {
+        array_push($errors, $message);
+    }
+}
