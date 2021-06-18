@@ -59,3 +59,17 @@ function mailAddressCheck(array &$errors, string $check_value, string $message):
         array_push($errors, $message);
     }
 }
+/**
+ * 半角英数字チェック
+ *
+ * @param array $errors
+ * @param string $check_value
+ * @param string $message
+ * @return void
+ */
+function halfAlphanumericCheck(array &$errors, string $check_value, string $message): void
+{
+    if (!preg_match("/^[a-zA-Z0-9]+$/", $check_value)) {
+        array_push($errors, $message);
+    }
+}
