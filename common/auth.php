@@ -34,3 +34,16 @@ function getLoginUserName(): string
     }
     return "";
 }
+
+/**
+ * ログインしているユーザーIDを取得する
+ *
+ * @return string|null
+ */
+function getLoginUserId(): ?string
+{
+    if (isset($_SESSION['user'])) {
+        return $_SESSION['user']['id'];
+    }
+    return null;
+}
