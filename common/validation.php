@@ -55,7 +55,7 @@ function stringMaxSizeCheck(array &$errors, string $check_value, string $message
  */
 function mailAddressCheck(array &$errors, string $check_value, string $message): void
 {
-    if (!filter_var($check_value . FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($check_value, FILTER_VALIDATE_EMAIL)) {
         array_push($errors, $message);
     }
 }
