@@ -48,7 +48,7 @@ try {
     if ($statement = $database_handler->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)')) {
         $password = password_hash($user_password, PASSWORD_DEFAULT);
 
-        $statement->bindParam(':name', htmlspecialchars($user_name));
+        $statement->bindParam(':name', htmlspecialchars($user_name, ENT_QUOTES));
         $statement->bindParam(':email', $user_email);
         $statement->bindParam(':password', $password);
         $statement->execute();
